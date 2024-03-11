@@ -27,7 +27,9 @@ from models import storage
 from models.base_model import BaseModel
 
 current_classes = {'BaseModel': BaseModel, 'User': User,
-                    }
+                    'Amenity': Amenity, 'City': City, 'State': State,
+                    'Place': Place, 'Review': Review}
+
 
 class HBNBCommand(cmd.Cmd):
     """The command interpreter.
