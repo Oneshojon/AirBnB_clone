@@ -4,6 +4,7 @@ from datetime import datetime
 import uuid
 import models
 
+
 class BaseModel:
     """
     A class to represent AirBnB_clone.
@@ -61,6 +62,7 @@ class BaseModel:
         obj_dict["created_at"] = self.created_at.isoformat()
         obj_dict["updated_at"] = self.updated_at.isoformat()
         return obj_dict
+
     def __str__(self):
         """
         Returns a string representation of the object.
@@ -70,4 +72,4 @@ class BaseModel:
             attributes and their values
         """
         return ("[{}] ({}) {}".
-                 format(self.__class__.__name__, self.id, self__dict__))
+                format(self.__class__.__name__, self.id, self__dict__))
