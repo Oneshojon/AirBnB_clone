@@ -51,7 +51,7 @@ class TestAmenity(unittest.TestCase):
     def test_save(self):
         """
         Test method for save
-        tests save 
+        tests save
         """
         a1 = Amenity()
         old_update = a1.updated_at
