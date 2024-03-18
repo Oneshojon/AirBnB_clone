@@ -1,5 +1,10 @@
 #!/usr/bin/python3
-""" the entry point of the command interpreter
+"""This module defines the entry point of the command interpreter.
+
+It defines one class, `HBNBCommand()`, which sub-classes the `cmd.Cmd` class.
+This module defines abstractions that allows us to manipulate a powerful
+storage system (FileStorage / DB). This abstraction will also allow us to
+change the type of storage easily without updating all of our codebase.
 
 It allows us to interactively and non-interactively:
     - create a data model
@@ -9,7 +14,7 @@ It allows us to interactively and non-interactively:
 Typical usage example:
 
     $ ./console
-    (hbnh)
+    (hbnb)
 
     (hbnb) help
     Documented commands (type help <topic>):
@@ -21,14 +26,20 @@ Typical usage example:
     $
 """
 import re
-import cmb
+import cmd
 import json
 from models import storage
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.review import Review
+from models.amenity import Amenity
+from models.place import Place
 
 current_classes = {'BaseModel': BaseModel, 'User': User,
-                    'Amenity': Amenity, 'City': City, 'State': State,
-                    'Place': Place, 'Review': Review}
+                   'Amenity': Amenity, 'City': City, 'State': State,
+                   'Place': Place, 'Review': Review}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -155,43 +166,43 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             print(["{}".format(str(v))
-                for _, v in all_objs.items() if type(v).__name__ == args[0]])
+                  for _, v in all_objs.items() if type(v).__name__ == args[0]])
             return
 
-     def do_update(self, arg: str):
-         """
-         Updates an instance based on the class name and id.
-         """
-         args = arg.split(maxsplit=3)
-         if not validate_classname(args, check_id=True):
-             return
-         instance_objs = storage.all()
-         key = "{}.{}".format(args[0], args[1])
-         req_instance = instance_objs.get(key, None)
-         if req_instance is None:
-             print("** no instance found **")
-             return
-         match_json = re.findall(r"{.*}", arg)
-         if match_json:
-             payload = None
-             try:
-                 payload: dict = json.loads(match_json[0])
-             except Exception:
-                 print("** invalid syntax")
-                 return
-             for k, v in payload.items():
-                 setattr(req_instance, k, v)
-             storage.save()
-             return
-         if not validate_attrs(args):
-             return
-         first_attr = re.findall(r"^[\"\'](.*?)[\"\']", args[3])
-         if first_attr:
-             setattr(req_instance, args[2], first_attr[0])
-         else:
-             value_list = args[3].split()
-             setattr(req_instance, args[2], parse_str(value_list[0]))
-         storage.save()
+    def do_update(self, arg: str):
+        """
+        Updates an instance based on the class name and id.
+        """
+        args = arg.split(maxsplit=3)
+        if not validate_classname(args, check_id=True):
+            return
+        instance_objs = storage.all()
+        key = "{}.{}".format(args[0], args[1])
+        req_instance = instance_objs.get(key, None)
+        if req_instance is None:
+            print("** no instance found **")
+            return
+        match_json = re.findall(r"{.*}", arg)
+        if match_json:
+            payload = None
+            try:
+                payload: dict = json.loads(match_json[0])
+            except Exception:
+                print("** invalid syntax")
+                return
+            for k, v in payload.items():
+                setattr(req_instance, k, v)
+            storage.save()
+            return
+        if not validate_attrs(args):
+            return
+        first_attr = re.findall(r"^[\"\'](.*?)[\"\']", args[3])
+        if first_attr:
+            setattr(req_instance, args[2], first_attr[0])
+        else:
+            value_list = args[3].split()
+            setattr(req_instance, args[2], parse_str(value_list[0]))
+        storage.save()
 
 
 def validate_classname(args, check_id=False):
@@ -222,16 +233,17 @@ def validate_attrs(args):
         return False
     return True
 
+
 def is_float(x):
     """
     Checks if `x` is float or not.
     """
-     try:
-         a = float(x)
-     except (TypeError, ValueError):
-         return False
-     else:
-         return True
+    try:
+        a = float(x)
+    except (TypeError, ValueError):
+        return False
+    else:
+        return True
 
 
 def is_int(x):
