@@ -1,0 +1,37 @@
+section.filters {
+	background-color:white;
+	height: 70px;
+	width: 100%;
+	border: 1px #DDDDDD solid;
+	border-radius: 4px;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding-right:30px;
+}
+button {
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	font-size: 18px;
+	height: 48px;
+	width: 20%;
+	border:0;
+	border-radius: 4px;
+}
+button:hover {
+	opacity: 0.9;
+}
+section.locations, section.amenities {
+	height: 100%;
+	width: 25%;
+}
+section.locations{
+	border-right: 1px #DDDDDD solid;
+}
+h3 {
+	font-weight: 600;
+}
+h4 {
+	font-weight: 400;
+	font-size: 14px;
+}
