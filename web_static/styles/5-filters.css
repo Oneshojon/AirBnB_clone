@@ -23,7 +23,7 @@ button {
 button:hover {
 	opacity: 0.9;
 }
-section.locations 
+.locations 
 {
 	height: 100%;
 	width: 25%;
@@ -32,7 +32,7 @@ section.locations
 	text-align: left;
 	margin-left: 40px;
 }
-section.amenities {
+.amenities {
 	height: 100%;
 	width: 25%;
 	order: 1;
