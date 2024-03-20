@@ -1,0 +1,12 @@
+button.filters {
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	font-size: 18px;
+	height: 48px;
+	width: 20%;
+	border:0;
+	border-radius: 4px;
+	position: absolute;
+	transform: translateY(-50%);
+	right: 30px;
+}
