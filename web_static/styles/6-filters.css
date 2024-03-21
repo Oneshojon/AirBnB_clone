@@ -68,11 +68,11 @@ h4 {
 .locations .popover ul {
 	padding-left: 20px;
 }
-.locations:hover .popover {
+.locations:hover > .popover {
 	display: block;
 	padding-left: 18px;
 }
-.amenities:hover .popover
+.amenities:hover > .popover
 {
 	display: block;
 }
