@@ -1,0 +1,19 @@
+section.places h1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 30px;
+}
+
+section.places article {
+	width: 390px;
+	padding: 20px;
+	margin: 20px;
+	border: 1px #FF5A5F;
+	border-radius: 4px;
+}
+section.places article h2 {
+	font-size: 30px;
+	margin: 0 auto;
+	display: block;
+}
