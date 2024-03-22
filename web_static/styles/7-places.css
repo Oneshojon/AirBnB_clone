@@ -1,8 +1,15 @@
+.places {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
 section.places h1 {
-	position: absolute;
-	top: 0;
-	left: 0;
+	text-align: left;
+	display: block;
+	flex-grow: 2;
+	width: 100%;
 	font-size: 30px;
+	margin-left: 1em;
 }
 
 section.places article {
@@ -14,6 +21,6 @@ section.places article {
 }
 section.places article h2 {
 	font-size: 30px;
-	margin: 0 auto;
-	display: block;
+	text-align: center;
+	margin-top: 0.175em;
 }
